@@ -1,0 +1,49 @@
+.header {
+    overflow: hidden;
+    margin: 10px 30px;
+}
+
+.header .prev-next-buttons{
+    float: right;
+    text-align:right;
+    padding-top: 20px;
+}
+.sprint-options {
+    float: right;
+    padding: 0 60px 40px 0;
+}
+.nav-buttons {
+    padding: 5px;
+}
+span {
+    padding: 3px;
+}
+.sprint-category {
+    margin: 0 30px;
+}
+.add-ticket {
+    background: none;
+    float: right;
+}
+.border {
+    border: 0.5px solid #8d8989;
+    width: 90%;
+    margin: 30px 0;
+    padding: 0;
+    margin-left: 5%;
+}
+.add-ticket {
+    background: none;
+}
+.panel-heading h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    width: 75%;
+    padding-top: 8px;
+}
+.error-message {
+    margin: 0 60px 20px;
+    display: none;
+}

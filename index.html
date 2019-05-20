@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Javascript Activity 1</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel='stylesheet' href='css/bootstrap.min.css'>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <div class="row header">
+        <div class="col-sm-6 sprint-title">
+            <div>
+                <h2 id="current-sprint">Sprint #</h2>
+            </div>
+        </div>
+        <div class="col-sm-6 prev-next-buttons">
+            <button class="btn btn-warning" type="submit" onClick="getPrevSprint()"><span class="glyphicon glyphicon-chevron-left"></span>Previous</button>
+            <button class="btn btn-success" type="submit" onClick="getNextSprint()">Next<span class="glyphicon glyphicon-chevron-right"></span></button>
+        </div>
+    </div>
+    <div class="border"></div>
+
+    <div class="row">
+        <div class="alert alert-danger error-message" id="prev-error" role="alert">
+            <a href="#" class="alert-link" > No more previous sprints... </a>
+        </div>
+        <div class="alert alert-danger error-message" id="next-error" role="alert">
+            <a href="#" class="alert-link"> No more next sprints... </a>
+        </div>
+        <div class="sprint-options">
+            <button class="btn btn-primary nav-buttons" type="submit" data-toggle="modal" data-target="#addSprintModal">Add Sprint <span class="fa fa-plus"></span></span></button>
+            <button class="btn btn-danger nav-buttons" type="submit" onClick="deleteSprint()">Delete Sprint<span class="fa fa-minus"></span></span></button>
+        </div>
+    </div>
+    <div class="row sprint-category">
+        <div class="col-sm-4">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title pull-left">New</h3>
+                    <button class="btn btn-default pull-right add-ticket" data-toggle="modal" data-target="#addTicketModal"
+                        data-whatever="New Ticket">
+                        <span class="fa fa-plus" onClick="getCategoryType(0)"></span>
+                    </button>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body" id="new-tickets"></div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title pull-left">IN PROGRESS</h3>
+                    <button class="btn btn-default pull-right add-ticket" data-toggle="modal" data-target="#addTicketModal"
+                        data-whatever="In Progress Ticket" onClick="getCategoryType(1)">
+                        <span class="fa fa-plus" onClick="getCategoryType(0)"></span>
+                    </button>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body" id="progress-tickets"></div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title pull-left">Done</h3>
+                    <button class="btn btn-default pull-right add-ticket" data-toggle="modal" data-target="#addTicketModal"
+                        data-whatever="Done Ticket" onClick="getCategoryType(2)">
+                        <span class="fa fa-plus" onClick="getCategoryType(0)"></span></button>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body" id="done-tickets">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addTicketModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel"> </h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="ticket-name" class="control-label">Ticket:</label>
+                            <input type="text" class="form-control" id="ticket-name" placeholder="Ticket">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-dismiss="modal" onClick="saveTicket()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addSprintModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" > Add New Sprint </h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="sprint-name" class="control-label">Name:</label>
+                            <input type="text" class="form-control" id="sprint-name" placeholder="Sprint name">
+                        </div>
+                        <div class="form-group">
+                            <label for="duration" class="control-label">Duration:</label>
+                            <input type="text" class="form-control" id="duration" placeholder="Duration">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-dismiss="modal" onClick="saveSprint()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
